@@ -2,7 +2,7 @@ import React from 'react'
 
 const HomeContainer = () => {
   return (
-    <div>Home Page</div>
+    <div className='text-2xl hover:bg-black hover:text-white'>Home Page</div>
   )
 }
 
