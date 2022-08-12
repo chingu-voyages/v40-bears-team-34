@@ -1,10 +1,13 @@
 import React from 'react'
+import Layout from '../components/Layout';
 import HomeContainer from '../containers/HomeContainer'
 
 const Home = () => {
   return (
-    <HomeContainer/>  
-  )
+    <Layout>
+      <HomeContainer />
+    </Layout>
+  );
 }
 
 export default Home
