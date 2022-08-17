@@ -5,7 +5,8 @@ import gaugeChart from "../../assets/gauge-placeholder.jpg";
 
 /**
  *
- * @returns Gets data and displays liability results,
+ * @returns
+ * Gets data and displays liability results,
  * gauge chart, city and state.
  * Will display information only if data is available
  */
