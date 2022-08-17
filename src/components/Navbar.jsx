@@ -37,12 +37,12 @@ const Navbar = () => {
           </NavLink>
         </li>
         <strong>|</strong>
-        <li>
+        {/* <li>
           <NavLink className="p-4" to="/search">
             Search
           </NavLink>
         </li>
-        <strong>|</strong>
+        <strong>|</strong> */}
         <li>
           <NavLink className="p-4" to="/results">
             Results
@@ -66,9 +66,9 @@ const Navbar = () => {
           <li className="p-4 border-b border-gray-600">
             <NavLink to="/">Home</NavLink>
           </li>
-          <li className="p-4 border-b border-gray-600">
+          {/* <li className="p-4 border-b border-gray-600">
             <NavLink to="/search">Search</NavLink>
-          </li>
+          </li> */}
           <li className="p-4">
             <NavLink to="/results">Results</NavLink>
           </li>
