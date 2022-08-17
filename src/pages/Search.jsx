@@ -1,13 +1,11 @@
-import React from 'react'
-import Layout from '../components/Layout';
-import SearchContainer from '../containers/SearchContainer';
+import React from "react";
 
 const Search = () => {
   return (
-    <Layout>
-      <SearchContainer />
-    </Layout>
+    <div className="min-h-[90vh] flex flex-col items-center justify-center">
+      SearchPage
+    </div>
   );
-}
+};
 
-export default Search
+export default Search;
