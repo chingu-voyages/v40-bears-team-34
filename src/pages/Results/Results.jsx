@@ -1,7 +1,8 @@
 import React from "react";
 
 // Importing other components
-import LiabilityResults from "./LiabilityResults";
+import LivabilityResults from "./LivabilityResults";
+import ApartmentResults from "./ApartmentResults";
 
 /**
  *
@@ -11,8 +12,9 @@ import LiabilityResults from "./LiabilityResults";
  */
 const Results = () => {
   return (
-    <div className="text-2xl min-h-[90vh] w-[100%] flex flex-col items-center justify-center">
-      <LiabilityResults />
+    <div className="text-2xl min-h-[90vh] flex flex-col items-center justify-center">
+      <LivabilityResults />
+      <ApartmentResults />
     </div>
   );
 };

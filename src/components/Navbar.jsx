@@ -64,13 +64,17 @@ const Navbar = () => {
         <img src={logo} width="200px" alt="company logo" />
         <ul className="uppercase p-4">
           <li className="p-4 border-b border-gray-600">
-            <NavLink to="/">Home</NavLink>
+            <NavLink onClick={handleNav} to="/">
+              Home
+            </NavLink>
           </li>
           {/* <li className="p-4 border-b border-gray-600">
             <NavLink to="/search">Search</NavLink>
           </li> */}
           <li className="p-4">
-            <NavLink to="/results">Results</NavLink>
+            <NavLink onClick={handleNav} to="/results">
+              Results
+            </NavLink>
           </li>
         </ul>
       </div>

@@ -18,5 +18,7 @@ in your `readme` feel free to replace the text we've provided here.
 React
 React Router
 React Icons
+Chart JS
+React Chart JS 2
 Tailwind CSS
 Vite

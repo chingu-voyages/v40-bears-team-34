@@ -11,12 +11,12 @@ import gaugeChart from "../../assets/gauge-placeholder.jpg";
  * Will display information only if data is available
  */
 
-const LiabilityResults = () => {
+const LivabilityResults = () => {
   return (
-    <div className="flex flex-col items-center border border-gray-300 rounded-md shadow-lg hover:shadow-xl py-8 w-[90%]">
+    <div className="flex flex-col items-center border border-gray-300 rounded-md shadow-lg hover:shadow-xl py-8 w-[90%] mb-40">
       <h1 className="p-2">We have found 2 cities that fit your needs</h1>
       <p className="p-2 mb-10">
-        With a <em>Liability Score</em> of: <strong>100</strong>, we recommend
+        With a <em>Livability Score</em> of: <strong>100</strong>, we recommend
         you:
       </p>
       {/* {This part will eventually become its own component since
@@ -42,4 +42,4 @@ const LiabilityResults = () => {
   );
 };
 
-export default LiabilityResults;
+export default LivabilityResults;
