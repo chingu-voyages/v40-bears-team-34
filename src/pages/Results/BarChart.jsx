@@ -42,27 +42,59 @@ const BarChart = ({ chartData }) => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,
         text: "Review Rates",
+        color: "#000000",
+        font: {
+          family: "'Verdana', 'sans-serif'",
+        },
+      },
+      legend: {
+        position: "bottom",
+        labels: {
+          color: "#000000",
+          font: {
+            family: "'Verdana', 'sans-serif'",
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: "#000000",
+          font: {
+            family: "'Verdana', 'sans-serif'",
+          },
+        },
+      },
+      y: {
+        ticks: {
+          color: "#000000",
+          font: {
+            family: "'Verdana', 'sans-serif'",
+          },
+        },
       },
     },
   };
 
   // Data formatted for Chart
   const [userData, setUserData] = useState({
-    labels,
+    labels: ["Quiet", "Clean", "Management", "Bugs", "Neighboorhood", "Crime"],
     datasets: [
       {
         label: "Positive",
         data: positiveValues,
-        backgroundColor: "rgba(178, 222, 39, 1)",
+        backgroundColor: "#31CC0C",
       },
       {
         label: "Negative",
         data: negativeValues,
-        backgroundColor: "rgba(255, 76, 48, 1)",
+        backgroundColor: "#E32804",
       },
     ],
   });

@@ -17,6 +17,8 @@ const Navbar = () => {
   // true = navBar is showing display close menu, false = navBar is not showing, display menu icon
   const [nav, setNav] = useState(false);
 
+  // Setting active style in NavLink
+
   const handleNav = () => {
     setNav(!nav);
   };
@@ -32,7 +34,12 @@ const Navbar = () => {
       } */}
       <ul className="hidden md:flex">
         <li>
-          <NavLink className="p-4" to="/">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? `p-4 underline underline-offset-4` : "p-4"
+            }
+            to="/"
+          >
             Home
           </NavLink>
         </li>
@@ -44,7 +51,12 @@ const Navbar = () => {
         </li>
         <strong>|</strong> */}
         <li>
-          <NavLink className="p-4" to="/results">
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? `p-4 underline underline-offset-4` : "p-4"
+            }
+            to="/results"
+          >
             Results
           </NavLink>
         </li>
