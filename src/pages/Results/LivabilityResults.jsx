@@ -1,7 +1,7 @@
 import React from "react";
-import { BsDot } from "react-icons/bs";
-// importing image placeholder -- will be deleted later
-import gaugeChart from "../../assets/gauge-placeholder.jpg";
+
+// Importing gauge Chart
+import GaugeChart from "./GaugeChart";
 
 /**
  *
@@ -11,32 +11,23 @@ import gaugeChart from "../../assets/gauge-placeholder.jpg";
  * Will display information only if data is available
  */
 
-const LivabilityResults = () => {
+// This component needs City, State and Score(number)
+const LivabilityResults = ({ config }) => {
+  const { city, state, score } = config;
+
+  const message = (
+    <p className="p-2 m-4">
+      With a <em>Livability Score</em> of: <strong>{score}%</strong>, we
+      recommend:
+    </p>
+  );
   return (
-    <div className="flex flex-col items-center border border-gray-300 rounded-md shadow-lg hover:shadow-xl py-8 w-[90%] mb-20">
-      <h1 className="p-2">We have found 2 cities that fit your needs</h1>
-      <p className="p-2 mb-10">
-        With a <em>Livability Score</em> of: <strong>100</strong>, we recommend:
-      </p>
-      {/* {This part will eventually become its own component since
-        we are going to evaluate different cases:
-        1 result, 1+, or none} */}
-      <div className="flex flex-col items-center border border-gray-400 rounded-md shadow-lg hover:shadow-xl py-4 w-[90%]">
-        <img src={gaugeChart} alt="gauge chart" width="350px" />
-        <p className="py-4">San Diego, California</p>
-        {/* This buttons will be configured to  */}
-        <div className="flex justify-between border border-gray-400 rounded-md ">
-          <button>
-            <BsDot size={30} />
-          </button>
-          <button>
-            <BsDot size={30} />
-          </button>
-          <button>
-            <BsDot size={30} />
-          </button>
-        </div>
+    <div className="flex flex-col items-center shadow-xl hover:shadow-xl py-4 w-[100%]">
+      {message}
+      <div className="relative m-4">
+        <GaugeChart score={score} />
       </div>
+      <p className="py-4 my-4">{city + ", " + state}</p>
     </div>
   );
 };

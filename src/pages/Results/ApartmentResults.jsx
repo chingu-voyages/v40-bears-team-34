@@ -14,83 +14,10 @@ import BarChart from "./BarChart";
  * This object mimics format of data coming from API
  */
 import apartment from "../../assets/apartments.jpg";
-const results = {
-  // Contains data of apartaments complex
-  // This data is already filtered by the backend
-  // This case is assuming that I got an array with multiple cities and apartment complexes.
-  data: [
-    {
-      state: "CA",
-      city: "San Diego",
-      // List of apartments
-      apartamentsList: [
-        {
-          monthlyRent: 1500,
-          amenities: {
-            petFriendly: true,
-            gated: true,
-            inUnitWasherDryer: true,
-            pool: true,
-            fitnessCenter: true,
-            parking: true,
-          },
-          amenitiesLabel: [
-            "Pet Friendly",
-            "Gated",
-            "In-Unit Washer/Dryer",
-            "Pool",
-            "Fitness Center",
-            "Parking",
-          ],
-          image: "../../assets/apartments.jpg",
-          name: "Pointe 38",
-          contactPerson: "John Doe",
-          contactEmail: "johndoe@gmail.com",
-          bedrooms: 1,
-          reviews: {},
-        },
-      ],
-      // Livability score, generated in backend, and added to the object
-      // after being filtered by db
-      livabilityScore: {
-        // Total score generated
-        totalScore: 100,
-        reviewInsides: {
-          // List that display amenities selected with their score
-          // These rates must be numbers to make bar chart
-          petFriendly: {
-            positivityRate: 5,
-            negativityRate: 68,
-          },
-          gated: {
-            positivityRate: 12,
-            negativityRate: 35,
-          },
-          inUnitWasherDryer: {
-            positivityRate: 77,
-            negativityRate: 48,
-          },
-          pool: {
-            positivityRate: 80,
-            negativityRate: 17,
-          },
-          fitnessCenter: {
-            positivityRate: 50,
-            negativityRate: 100,
-          },
-          parking: {
-            positivityRate: 21,
-            negativityRate: 50,
-          },
-        },
-      },
-      //
-    },
-  ],
-};
 
-const ApartmentResults = () => {
-  const firstCity = results.data[0];
+const ApartmentResults = ({ config: apartmentData }) => {
+  console.log(apartmentData);
+  const firstCity = apartmentData.data;
   const firstApartmentDetails = firstCity.apartamentsList[0];
 
   // Setting icons, later can be a favorites functionality
@@ -101,8 +28,7 @@ const ApartmentResults = () => {
   };
 
   return (
-    // Box container
-    <div className="flex flex-col items-center border border-gray-300 rounded-md shadow-lg hover:shadow-xl py-8 w-[90%] mb-40">
+    <>
       {/* Individual Box */}
       <div className="flex border relative border-gray-300 rounded-md shadow-lg hover:shadow-xl py-4 px-4 m-4">
         {!isFilled ? (
@@ -174,7 +100,7 @@ const ApartmentResults = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
