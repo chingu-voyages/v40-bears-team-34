@@ -16,18 +16,23 @@ const LivabilityResults = ({ config }) => {
   const { city, state, score } = config;
 
   const message = (
-    <p className="p-2 m-4">
+    <p className="py-16 -4">
       With a <em>Livability Score</em> of: <strong>{score}%</strong>, we
       recommend:
     </p>
   );
   return (
-    <div className="flex flex-col items-center shadow-xl hover:shadow-xl py-4 w-[100%]">
+    <div className="m-auto w-full h-[600px]">
       {message}
-      <div className="relative m-4">
-        <GaugeChart score={score} />
+      <div className="flex flex-col items-center shadow-xl hover:shadow-xl py-16 w-[100%] border">
+        <div className="relative m-4">
+          <GaugeChart score={score} />
+        </div>
+        <p className="py-4 my-4">{city + ", " + state}</p>
       </div>
-      <p className="py-4 my-4">{city + ", " + state}</p>
+      <p className="text-sm text-center my-2">
+        Use the arrows or dots to browse between results
+      </p>
     </div>
   );
 };

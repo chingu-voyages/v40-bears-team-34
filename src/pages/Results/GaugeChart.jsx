@@ -54,8 +54,6 @@ const GaugeChart = ({ score }) => {
 
   const chartRef = useRef();
 
-  console.log(chartRef);
-
   // Getting gradient colors
   useEffect(() => {
     const chart = chartRef.current;

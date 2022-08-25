@@ -3,26 +3,26 @@ import React, { useState } from "react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { VscCircleOutline } from "react-icons/vsc";
 
-// Slider for the gauge chart
-
-const Slider = ({ component: Component, componentData, ...componentProps }) => {
+const ApartmentsSlider = ({ components: Components }) => {
+  console.log(Components[0]);
   const [current, setCurrent] = useState(0);
-  const length = componentData.length;
+  const length = Components[0].length;
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
+    onStateChange();
   };
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
-  if (!Array.isArray(componentData) || componentData.length <= 0) {
+  if (!Array.isArray(Components[0]) || Components[0].length <= 0) {
     return null;
   }
 
   return (
-    <div className="relative flex items-center flex-col p-4 bg-transparent">
-      {componentData.map((slide, index) => {
+    <div className="relative flex items-center w-[100%] flex-col p-4 bg-transparent">
+      {Components[0].map((Component, index) => {
         return (
           <div
             key={index}
@@ -35,22 +35,22 @@ const Slider = ({ component: Component, componentData, ...componentProps }) => {
             <div className="hidden md:block">
               <BsArrowLeftCircle
                 onClick={prevSlide}
-                className="md:absolute top-[55%] left-[30px] text-black cursor-pointer select-none z-[2]"
+                className="md:absolute top-[55%]  text-black cursor-pointer select-none z-[2]"
                 size={30}
               />
             </div>
-            {index === current && <Component config={slide} />}
+            {index === current && Component}
             <div className="hidden md:block">
               <BsArrowRightCircle
                 onClick={nextSlide}
-                className="md:absolute top-[55%] right-[30px] text-black cursor-pointer select-none z-[2]"
+                className="md:absolute top-[55%] left-[68%] text-black cursor-pointer select-none z-[2]"
                 size={30}
               />
             </div>
           </div>
         );
       })}
-      <div className="absolute justify-between mt-2 bottom-[5%] sm:bottom-[8%] md:bottom-[10%] ">
+      <div className="absolute justify-between mt-2 bottom-[2%] ">
         <button>
           <VscCircleOutline size={20} className="mx-2" />
         </button>
@@ -65,4 +65,4 @@ const Slider = ({ component: Component, componentData, ...componentProps }) => {
   );
 };
 
-export default Slider;
+export default ApartmentsSlider;

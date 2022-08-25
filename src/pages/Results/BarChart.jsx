@@ -25,7 +25,7 @@ ChartJS.register(
 // to display positivity and negativity rate
 const BarChart = ({ chartData }) => {
   // Formatting dummy data for Bar Chart
-  const apartamentReviewRates = chartData.livabilityScore.reviewInsides;
+  const apartamentReviewRates = chartData[0].livabilityScore.reviewInsides;
   // List that represent labels for chart, must be an array
   const labels = [];
   const positiveValues = [];

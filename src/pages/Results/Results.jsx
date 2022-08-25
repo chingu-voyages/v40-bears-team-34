@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Importing other components
 import LivabilityResults from "./LivabilityResults";
@@ -42,12 +42,88 @@ const results = {
           bedrooms: 1,
           reviews: {},
         },
+        {
+          monthlyRent: 800,
+          amenities: {
+            petFriendly: true,
+            gated: true,
+            inUnitWasherDryer: true,
+            pool: true,
+            fitnessCenter: true,
+            parking: true,
+          },
+          amenitiesLabel: [
+            "Pet Friendly",
+            "Gated",
+            "In-Unit Washer/Dryer",
+            "Pool",
+            "Fitness Center",
+            "Parking",
+          ],
+          image: "../../assets/apartments.jpg",
+          name: "Pointe 38",
+          contactPerson: "John Doe",
+          contactEmail: "johndoe@gmail.com",
+          bedrooms: 1,
+          reviews: {},
+        },
+        {
+          monthlyRent: 200,
+          amenities: {
+            petFriendly: true,
+            gated: true,
+            inUnitWasherDryer: true,
+            pool: true,
+            fitnessCenter: true,
+            parking: true,
+          },
+          amenitiesLabel: [
+            "Pet Friendly",
+            "Gated",
+            "In-Unit Washer/Dryer",
+            "Pool",
+            "Fitness Center",
+            "Parking",
+          ],
+          image: "../../assets/apartments.jpg",
+          name: "Pointe 38",
+          contactPerson: "John Doe",
+          contactEmail: "johndoe@gmail.com",
+          bedrooms: 1,
+          reviews: {},
+        },
+        {
+          monthlyRent: 1100,
+          amenities: {
+            petFriendly: true,
+            gated: true,
+            inUnitWasherDryer: true,
+            pool: true,
+            fitnessCenter: true,
+            parking: true,
+          },
+          amenitiesLabel: [
+            "Pet Friendly",
+            "Gated",
+            "In-Unit Washer/Dryer",
+            "Pool",
+            "Fitness Center",
+            "Parking",
+          ],
+          image: "../../assets/apartments.jpg",
+          name: "Pointe 38",
+          contactPerson: "John Doe",
+          contactEmail: "johndoe@gmail.com",
+          bedrooms: 1,
+          reviews: {},
+        },
       ],
       // Livability score, generated in backend, and added to the object
       // after being filtered by db
       livabilityScore: {
         // Total score generated
-        totalScore: 85,
+        totalScore: 20,
+        // ["Quiet", "Clean", "Management", "Bugs", "Neighboorhood", "Crime"],
         reviewInsides: {
           // List that display amenities selected with their score
           // These rates must be numbers to make bar chart
@@ -81,11 +157,11 @@ const results = {
     },
     {
       state: "FL",
-      city: "Orlando",
+      city: "Jacksonville",
       // List of apartments
       apartamentsList: [
         {
-          monthlyRent: 1500,
+          monthlyRent: 500,
           amenities: {
             petFriendly: true,
             gated: true,
@@ -103,7 +179,7 @@ const results = {
             "Parking",
           ],
           image: "../../assets/apartments.jpg",
-          name: "Pointe 38",
+          name: "Random Building",
           contactPerson: "John Doe",
           contactEmail: "johndoe@gmail.com",
           bedrooms: 1,
@@ -114,74 +190,7 @@ const results = {
       // after being filtered by db
       livabilityScore: {
         // Total score generated
-        totalScore: 41,
-        reviewInsides: {
-          // List that display amenities selected with their score
-          // These rates must be numbers to make bar chart
-          petFriendly: {
-            positivityRate: 5,
-            negativityRate: 68,
-          },
-          gated: {
-            positivityRate: 12,
-            negativityRate: 35,
-          },
-          inUnitWasherDryer: {
-            positivityRate: 77,
-            negativityRate: 48,
-          },
-          pool: {
-            positivityRate: 80,
-            negativityRate: 17,
-          },
-          fitnessCenter: {
-            positivityRate: 50,
-            negativityRate: 100,
-          },
-          parking: {
-            positivityRate: 21,
-            negativityRate: 50,
-          },
-        },
-      },
-      //
-    },
-    {
-      state: "OR",
-      city: "Portland",
-      // List of apartments
-      apartamentsList: [
-        {
-          monthlyRent: 1500,
-          amenities: {
-            petFriendly: true,
-            gated: true,
-            inUnitWasherDryer: true,
-            pool: true,
-            fitnessCenter: true,
-            parking: true,
-          },
-          amenitiesLabel: [
-            "Pet Friendly",
-            "Gated",
-            "In-Unit Washer/Dryer",
-            "Pool",
-            "Fitness Center",
-            "Parking",
-          ],
-          image: "../../assets/apartments.jpg",
-          name: "Pointe 38",
-          contactPerson: "John Doe",
-          contactEmail: "johndoe@gmail.com",
-          bedrooms: 1,
-          reviews: {},
-        },
-      ],
-      // Livability score, generated in backend, and added to the object
-      // after being filtered by db
-      livabilityScore: {
-        // Total score generated
-        totalScore: 60,
+        totalScore: 85,
         reviewInsides: {
           // List that display amenities selected with their score
           // These rates must be numbers to make bar chart
@@ -229,19 +238,11 @@ const Results = () => {
     const { totalScore } = livabilityScore;
     return { state, city, score: totalScore };
   });
-  // console.log(livabilityData);
-
-  // data to display apartments
-
-  const apartmentData = results.data.map((stateResult) => {
-    return { data: stateResult };
-  });
 
   return (
     <div className="text-2xl min-h-[90vh] flex flex-col items-center justify-center">
       <Slider component={LivabilityResults} componentData={livabilityData} />
-      <h1 className="m-5 font-bold">Apartment results:</h1>
-      <Slider component={ApartmentResults} componentData={apartmentData} />
+      <ApartmentResults config={results} />
     </div>
   );
 };
