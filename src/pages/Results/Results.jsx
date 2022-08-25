@@ -128,28 +128,28 @@ const results = {
           // List that display amenities selected with their score
           // These rates must be numbers to make bar chart
           petFriendly: {
-            positivityRate: 5,
-            negativityRate: 68,
+            positivityRate: 2,
+            negativityRate: 3,
           },
           gated: {
-            positivityRate: 12,
-            negativityRate: 35,
+            positivityRate: 1,
+            negativityRate: 8,
           },
           inUnitWasherDryer: {
-            positivityRate: 77,
-            negativityRate: 48,
+            positivityRate: 9,
+            negativityRate: 12,
           },
           pool: {
-            positivityRate: 80,
-            negativityRate: 17,
+            positivityRate: 21,
+            negativityRate: 0,
           },
           fitnessCenter: {
-            positivityRate: 50,
-            negativityRate: 100,
+            positivityRate: 3,
+            negativityRate: 2,
           },
           parking: {
-            positivityRate: 21,
-            negativityRate: 50,
+            positivityRate: 4,
+            negativityRate: 8,
           },
         },
       },
@@ -195,7 +195,7 @@ const results = {
           // List that display amenities selected with their score
           // These rates must be numbers to make bar chart
           petFriendly: {
-            positivityRate: 5,
+            positivityRate: 100,
             negativityRate: 68,
           },
           gated: {

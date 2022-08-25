@@ -10,7 +10,8 @@ import { BiBed } from "react-icons/bi";
 
 import apartment from "../../assets/apartments.jpg";
 
-const ApartmentBox = ({ labels, apartmentData, chartData, config }) => {
+const ApartmentBox = ({ labels, apartmentData, chartData }) => {
+  console.log(chartData);
   const { city, stateName } = labels;
   const { amenitiesLabel, bedrooms, image, monthlyRent, name } = apartmentData;
   // Setting icons, later can be a favorites functionality
@@ -42,20 +43,17 @@ const ApartmentBox = ({ labels, apartmentData, chartData, config }) => {
           alt="apartment building"
         />
         <div className="flex flex-col p-2 my-4  border rounded-md border-gray-300 ">
-          <h1 className="self-center mb-4 border-b border-gray-300">
-            {city + ", " + stateName}
-          </h1>
+          <h1 className="self-center mb-4  border-gray-300">{name}</h1>
 
           {/* Apartment info box + icon */}
-          <div className="flex items-center text-sm border-b border-gray-300 my-2 ">
+          <div className="flex items-center text-sm  border-gray-300 my-2 ">
             <p>{<MdOutlineApartment size={20} className="mr-1" />} </p>
             <p>
-              <strong>Apartment Complex: </strong> {`${name}`}
+              <strong>City: </strong> {`${city}`}
             </p>
-            s
           </div>
           {/* Apartment info box + icon */}
-          <div className="flex items-center text-sm border-b border-gray-300 my-2 ">
+          <div className="flex items-center text-sm  border-gray-300 my-2 ">
             <p>{<BiBed size={20} className="mr-1" />} </p>
             <p>
               <strong>Bedrooms: </strong>
@@ -63,7 +61,7 @@ const ApartmentBox = ({ labels, apartmentData, chartData, config }) => {
             </p>
           </div>
           {/* Apartment info box + icon */}
-          <div className="flex items-center text-sm border-b border-gray-300 my-2 ">
+          <div className="flex items-center text-sm border-gray-300 my-2 ">
             <p>{<MdAttachMoney size={20} className="mr-1" />} </p>
             <p>
               <strong>Rent: </strong> {`${monthlyRent} `}

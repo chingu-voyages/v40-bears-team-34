@@ -24,8 +24,8 @@ const LivabilityResults = ({ config }) => {
   return (
     <div className="m-auto w-full h-[600px]">
       {message}
-      <div className="flex flex-col items-center shadow-xl hover:shadow-xl py-16 w-[100%] border">
-        <div className="relative m-4">
+      <div className="flex flex-col items-center shadow-xl hover:shadow-xl py-16 w-[100%] bg-[#f2f2f2] border">
+        <div className="relative mb-4">
           <GaugeChart score={score} />
         </div>
         <p className="py-4 my-4">{city + ", " + state}</p>
