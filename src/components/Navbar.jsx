@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     // regular size nav bar
-    <div className="flex justify-between items-center h-24 w-[100%] mx-auto px-4 bg-white">
+    <div className="flex justify-between items-center h-24 w-[100%] px-4 bg-white z-100">
       <button onClick={() => navigate("/")}>
         <img src={logo} width="200px" alt="company logo" />
         {/* <h1 className="w-full text-3xl font-bold">APCH.</h1> */}
@@ -44,12 +44,6 @@ const Navbar = () => {
           </NavLink>
         </li>
         <strong>|</strong>
-        {/* <li>
-          <NavLink className="p-4" to="/search">
-            Search
-          </NavLink>
-        </li>
-        <strong>|</strong> */}
         <li>
           <NavLink
             className={({ isActive }) =>
@@ -66,10 +60,11 @@ const Navbar = () => {
       <div onClick={handleNav} className="block md:hidden">
         {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
       </div>
+
       <div
         className={
           nav
-            ? "fixed left-0 top-0 w-[60%] h-full border-r py-6 border-r-gray-900 bg-white ease-in-out duration-500"
+            ? "fixed md:hidden left-0 top-0 w-[60%] h-full border-r py-6 border-r-gray-900 bg-white ease-in-out duration-500 z-50"
             : "fixed left-[-100%]"
         }
       >
@@ -80,9 +75,6 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          {/* <li className="p-4 border-b border-gray-600">
-            <NavLink to="/search">Search</NavLink>
-          </li> */}
           <li className="p-4">
             <NavLink onClick={handleNav} to="/results">
               Results

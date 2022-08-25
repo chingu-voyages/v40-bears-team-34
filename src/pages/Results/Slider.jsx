@@ -46,15 +46,15 @@ const Slider = ({ component: Component, componentData, ...componentProps }) => {
           </div>
         );
       })}
-      <div className="flex justify-between mt-2 relative bottom-[55px]">
+      <div className="flex justify-between mt-2 relative bottom-[40px]">
         <button>
-          <VscCircleOutline size={30} className="mx-2" />
+          <VscCircleOutline size={20} className="mx-2" />
         </button>
         <button>
-          <VscCircleOutline size={30} className="mx-2" />
+          <VscCircleOutline size={20} className="mx-2" />
         </button>
         <button>
-          <VscCircleOutline size={30} className="mx-2" />
+          <VscCircleOutline size={20} className="mx-2" />
         </button>
       </div>
     </div>

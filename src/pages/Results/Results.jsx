@@ -47,7 +47,7 @@ const results = {
       // after being filtered by db
       livabilityScore: {
         // Total score generated
-        totalScore: 100,
+        totalScore: 85,
         reviewInsides: {
           // List that display amenities selected with their score
           // These rates must be numbers to make bar chart
@@ -114,7 +114,7 @@ const results = {
       // after being filtered by db
       livabilityScore: {
         // Total score generated
-        totalScore: 100,
+        totalScore: 41,
         reviewInsides: {
           // List that display amenities selected with their score
           // These rates must be numbers to make bar chart
@@ -181,7 +181,7 @@ const results = {
       // after being filtered by db
       livabilityScore: {
         // Total score generated
-        totalScore: 100,
+        totalScore: 60,
         reviewInsides: {
           // List that display amenities selected with their score
           // These rates must be numbers to make bar chart
