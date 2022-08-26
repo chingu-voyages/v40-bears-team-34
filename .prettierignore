@@ -1,0 +1,10 @@
+.yarn
+node_modules
+.github
+*.html
+*.md
+tailwind.config.cjs
+vite.config.js
+.prettierrc.json
+postcss.config.cjs
+.yarnrc.yml 
