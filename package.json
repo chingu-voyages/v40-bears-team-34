@@ -1,4 +1,5 @@
-{    "name": "v40-bears-34-fe",
+{
+    "name": "v40-bears-34-fe",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -11,12 +12,12 @@
         "format": "prettier --write ."
     },
     "dependencies": {
-      "react-icons": "^4.4.0",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-router-dom": "^6.3.0",
         "chart.js": "^3.9.1",
-        "react-chartjs-2": "^4.3.1"
+        "react": "^18.2.0",
+        "react-chartjs-2": "^4.3.1",
+        "react-dom": "^18.2.0",
+        "react-icons": "^4.4.0",
+        "react-router-dom": "^6.3.0"
     },
     "devDependencies": {
         "@types/react": "^18.0.15",
@@ -31,4 +32,3 @@
     },
     "packageManager": "yarn@3.2.2"
 }
-
