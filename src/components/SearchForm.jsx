@@ -29,6 +29,8 @@ const SearchForm = () => {
     const [isAmenityChecked, setIsAmenityChecked] = useState(
         new Array(amenities.length).fill(false)
     )
+    const [rentAmount, setRentAmount] = useState({ min: 0, max: 0 })
+    const [bedType, setBedType] = useState('')
 
     // Adding refs to check values
     const inputsRef = useRef([])
@@ -46,8 +48,6 @@ const SearchForm = () => {
         )
 
         setStateIsChecked((prevState) => updateCheckedState)
-
-        console.log(inputsRef.current.checked)
     }
 
     const handleAmenitiesChecked = (position) => {
@@ -56,14 +56,40 @@ const SearchForm = () => {
         )
 
         setIsAmenityChecked((prevState) => updateCheckedAmenities)
-
-        console.log(inputsRef.current.checked)
     }
 
     const handleSearch = (e) => {
         e.preventDefault()
-        //TODO
-        navigate('/results')
+        //Selected States
+        const statesSelected = isStateChecked
+            .map((state, i) => {
+                let city
+                if (state === true) {
+                    city = states[i].split(', ')[1]
+                    return city
+                }
+            })
+            .filter((city) => city !== undefined)
+            .join(',')
+
+        // Selected Amenities
+        const amenitiesSelected = isAmenityChecked
+            .map((item, i) => {
+                let amenity
+                if (item === true) {
+                    amenity = amenities[i]
+                    return amenity
+                }
+            })
+            .filter((amenity) => amenity !== undefined)
+            .join(',')
+        // Selected Bedrooms
+        //bedType
+        // Min and Max Amount
+        // rentAmount
+        // request to get the results || use the dispatch
+
+        // navigate('/results')
     }
     return (
         <div className="px-12 py-6 my-6 bg-white font-['Verdana']">
@@ -120,15 +146,26 @@ const SearchForm = () => {
                     <div className="flex justify-evenly mt-4">
                         <input
                             type="radio"
-                            value="1-bedroom"
+                            value="1Bedroom"
                             name="rooms"
                             className="checked:bg-red-300"
+                            onChange={(e) => setBedType(e.target.value)}
                         />
                         1 Bedroom
-                        <input type="radio" value="2-bedroom" name="rooms" />2
-                        Bedrooms
-                        <input type="radio" value="3-bedroom" name="rooms" />3
-                        Bedrooms
+                        <input
+                            type="radio"
+                            value="2Bedroom"
+                            name="rooms"
+                            onChange={(e) => setBedType(e.target.value)}
+                        />
+                        2 Bedrooms
+                        <input
+                            type="radio"
+                            value="3Bedroom"
+                            name="rooms"
+                            onChange={(e) => setBedType(e.target.value)}
+                        />
+                        3 Bedrooms
                     </div>
                 </div>
 
@@ -147,6 +184,12 @@ const SearchForm = () => {
                                 name="min"
                                 min="0"
                                 id="min"
+                                onChange={(e) =>
+                                    setRentAmount((prev) => ({
+                                        ...prev,
+                                        min: e.target.value,
+                                    }))
+                                }
                                 placeholder="Min"
                                 autoComplete="given-value"
                                 className="border border-gray-300 py-2 text-center"
@@ -157,6 +200,12 @@ const SearchForm = () => {
                                 type="number"
                                 name="max"
                                 id="max"
+                                onChange={(e) =>
+                                    setRentAmount((prev) => ({
+                                        ...prev,
+                                        max: e.target.value,
+                                    }))
+                                }
                                 placeholder="Max"
                                 autoComplete="given-value"
                                 className="border border-gray-300 py-2 text-center"
