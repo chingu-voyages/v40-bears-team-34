@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const states = [
     'San Diego, CA',
@@ -32,8 +32,8 @@ const SearchForm = () => {
 
     // Adding refs to check values
     const inputsRef = useRef([])
-  const amenitiesRef = useRef([])
-  const navigate = useNavigate()
+    const amenitiesRef = useRef([])
+    const navigate = useNavigate()
 
     /**
      * @param {number} position | state index position
@@ -59,12 +59,11 @@ const SearchForm = () => {
 
         console.log(inputsRef.current.checked)
     }
-    
-     
+
     const handleSearch = (e) => {
-      e.preventDefault()
-      //TODO
-      navigate('/search')
+        e.preventDefault()
+        //TODO
+        navigate('/results')
     }
     return (
         <div className="px-12 py-6 my-6 bg-white font-['Verdana']">
