@@ -1,13 +1,11 @@
-import React from 'react'
-import Layout from '../components/Layout';
-import HomeContainer from '../containers/HomeContainer'
+import React from "react";
 
 const Home = () => {
   return (
-    <Layout>
-      <HomeContainer />
-    </Layout>
+    <div className="text-2xl min-h-[90vh] flex flex-col items-center justify-center">
+      Home Page
+    </div>
   );
-}
+};
 
-export default Home
+export default Home;
