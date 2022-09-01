@@ -1,8 +1,11 @@
 import React from 'react'
+import SearchForm from '../components/SearchForm'
 
 const HomeContainer = () => {
   return (
-    <div className='text-2xl hover:bg-black hover:text-white'>Home Page</div>
+    <div>
+      <SearchForm></SearchForm>
+    </div>
   )
 }
 
