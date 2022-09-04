@@ -92,14 +92,14 @@ const SearchForm = () => {
         // navigate('/results')
     }
     return (
-        <div className="px-12 py-6 my-6 bg-white font-['Verdana']">
+        <div className="px-12 py-6 my-6 bg-[#fff]">
             <form>
                 <div>
                     {/* City Selection */}
-                    <p className="text-center text-xl text-[#067272]">
+                    <p className="text-center text-xl text-primary">
                         Pick the cities to compare
                     </p>
-                    <p className="text-center text-xs text-[#067272]">
+                    <p className="text-center text-xs text-primary">
                         Minimum 2
                     </p>
                     <div className="grid gap-3 grid-cols-2 grid-rows-3 mt-4 text-center">
@@ -112,8 +112,8 @@ const SearchForm = () => {
                                     onClick={() => handleStateChecked(index)}
                                     className={
                                         isStateChecked[index]
-                                            ? 'py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 cursor-pointer bg-[#A1D2DE]'
-                                            : 'py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 cursor-pointer hover:bg-[#A1D2DE] '
+                                            ? 'py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 cursor-pointer bg-secondary'
+                                            : 'py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 cursor-pointer hover:bg-secondary '
                                     }
                                 >
                                     <input
@@ -133,14 +133,14 @@ const SearchForm = () => {
                     </div>
                 </div>
 
-                <p className="text-center text-2xl mt-10 text-[#067272]">
+                <p className="text-center text-2xl mt-10 text-primary">
                     Apartment Features
                 </p>
 
                 <div>
                     {' '}
                     {/* Bed Quantity */}
-                    <p className="text-center text-xl mt-4 text-[#067272]">
+                    <p className="text-center text-xl mt-4 text-primary">
                         Beds
                     </p>
                     <div className="flex justify-evenly mt-4">
@@ -173,7 +173,7 @@ const SearchForm = () => {
                     {' '}
                     {/* Rent Range */}
                     <div>
-                        <p className="text-center text-xl mt-10 text-[#067272]">
+                        <p className="text-center text-xl mt-10 text-primary">
                             Monthly Rent
                         </p>
                     </div>
@@ -218,12 +218,12 @@ const SearchForm = () => {
                     {' '}
                     {/* Amenity Selection */}
                     <div>
-                        <p className="text-center text-xl mt-10 text-[#067272]">
+                        <p className="text-center text-xl mt-10 text-primary">
                             Amenities
                         </p>
                     </div>
                     <div>
-                        <p className="text-center text-xs text-[#067272]">
+                        <p className="text-center text-xs text-primary">
                             Minimum 2
                         </p>
                     </div>
@@ -238,8 +238,8 @@ const SearchForm = () => {
                                     }
                                     className={
                                         isAmenityChecked[index]
-                                            ? 'py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 cursor-pointer bg-[#A1D2DE]'
-                                            : 'py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 cursor-pointer hover:bg-[#A1D2DE] '
+                                            ? 'py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 cursor-pointer bg-secondary'
+                                            : 'py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 cursor-pointer hover:bg-secondary '
                                     }
                                 >
                                     <input
@@ -263,7 +263,7 @@ const SearchForm = () => {
                     <button
                         type="button"
                         onClick={handleSearch}
-                        className="py-2 px-2 border border-black rounded-lg shadow-sm text-sm font-medium hover:bg-[#067272] hover:text-[#ffffff] bg-[#A1D2DE] text-[#067272]"
+                        className="py-2 px-2 border border-black rounded-lg shadow-sm text-sm font-medium hover:bg-primary hover:text-[#ffffff] bg-secondary text-primary"
                     >
                         Search
                     </button>
