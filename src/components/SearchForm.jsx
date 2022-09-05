@@ -92,7 +92,7 @@ const SearchForm = () => {
         // navigate('/results')
     }
     return (
-        <div className="px-12 py-6 my-6 bg-[#fff] w-[90vw] md:w-[75vw] lg:w-[55vw] xl:w-[35vw] 2xl:w-[35vw]  ">
+        <div className="px-12 py-6 my-12 bg-[#FFF] w-[90vw] md:w-[75vw] lg:w-[55vw] xl:w-[35vw] 2xl:w-[35vw]  transition ease-in-out delay-350 shadow-md hover:shadow-2xl  hover:scale-105">
             <form>
                 <div>
                     {/* City Selection */}
