@@ -26,18 +26,17 @@ const apartmentSlice = createSlice({
         builder.addCase(fetchApartment.pending, (state) => {
             state.loading = true
         })
-        builder.addCase(fetchApartment.fulfilled, (state,action) => {
-          state.loading = false;
-          state.apartment = action.payload;
-          state.error = ''
-          
+        builder.addCase(fetchApartment.fulfilled, (state, action) => {
+            state.loading = false
+            state.apartment = action.payload
+            state.error = ''
         })
-        builder.addCase(fetchApartment.rejected, (state,action) => {
-          state.loading = false;
-          state.apartment = {}
-          state.error = action.error.message
+        builder.addCase(fetchApartment.rejected, (state, action) => {
+            state.loading = false
+            state.apartment = {}
+            state.error = action.error.message
         })
     },
 })
 
-export default apartmentSlice.reducer;
+export default apartmentSlice.reducer
