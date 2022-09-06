@@ -5,7 +5,7 @@ const Apartment = ({ apartment }) => {
     const navigate = useNavigate()
     return (
         <div
-            className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 px-4 "
+            className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 px-4"
             onClick={() => navigate(`/apartments/${apartment._id}`)}
         >
             <div className="transition ease-in delay-150 bg-[#FDEEDC] rounded-lg overflow-hidden mb-10 hover:cursor-pointer shadow-md hover:shadow-2xl  hover:scale-105">

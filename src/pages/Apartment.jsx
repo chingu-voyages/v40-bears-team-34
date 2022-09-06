@@ -14,7 +14,7 @@ const Apartment = () => {
         dispatch(fetchApartment(id))
     }, [])
     return (
-        <div className="text-2xl min-h-[90vh] flex flex-col items-center justify-center bg-[#f2f2f2]">
+        <div className="text-2xl min-h-[90vh] flex flex-col items-center justify-center bg-[#f2f2f2] py-7">
             {loading && <h3>Loading...</h3>}
             {!loading && error ? <p>Error : {error}</p> : null}
             {!loading && <SoloApartment apartment={apartment} />}
