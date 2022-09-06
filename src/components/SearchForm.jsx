@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { searchApartments } from '../features/apartment/searchSlice'
 
 const states = [
     'San Diego, CA',
@@ -36,7 +38,7 @@ const SearchForm = () => {
     const inputsRef = useRef([])
     const amenitiesRef = useRef([])
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
     /**
      * @param {number} position | state index position
      * This function gets the index of the checkbox we
@@ -83,13 +85,15 @@ const SearchForm = () => {
             })
             .filter((amenity) => amenity !== undefined)
             .join(',')
+
+        //TODO
         // Selected Bedrooms
         //bedType
         // Min and Max Amount
         // rentAmount
         // request to get the results || use the dispatch
-
-        // navigate('/results')
+        dispatch(searchApartments(`state=${statesSelected}`))
+        navigate('/results')
     }
     return (
         <div className="px-12 py-6 my-12 bg-[#FFF] w-[90vw] md:w-[75vw] lg:w-[55vw] xl:w-[35vw] 2xl:w-[35vw]  transition ease-in-out delay-350 shadow-md hover:shadow-2xl  hover:scale-105">
