@@ -53,6 +53,19 @@ const Navbar = () => {
                                 ? `p-4 underline underline-offset-4`
                                 : 'p-4'
                         }
+                        to="/apartments"
+                    >
+                        Apartments
+                    </NavLink>
+                </li>
+                <strong>|</strong>
+                <li>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive
+                                ? `p-4 underline underline-offset-4`
+                                : 'p-4'
+                        }
                         to="/results"
                     >
                         Results
@@ -81,6 +94,11 @@ const Navbar = () => {
                     <li className="p-4 border-b border-gray-600">
                         <NavLink onClick={handleNav} to="/">
                             Home
+                        </NavLink>
+                    </li>
+                    <li className="p-4">
+                        <NavLink onClick={handleNav} to="/apartments">
+                            Apartments
                         </NavLink>
                     </li>
                     <li className="p-4">

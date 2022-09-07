@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { searchApartments } from '../features/apartment/searchSlice'
 
 const states = [
     'San Diego, CA',
@@ -36,7 +38,7 @@ const SearchForm = () => {
     const inputsRef = useRef([])
     const amenitiesRef = useRef([])
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
     /**
      * @param {number} position | state index position
      * This function gets the index of the checkbox we
@@ -83,23 +85,25 @@ const SearchForm = () => {
             })
             .filter((amenity) => amenity !== undefined)
             .join(',')
+
+        //TODO
         // Selected Bedrooms
         //bedType
         // Min and Max Amount
         // rentAmount
         // request to get the results || use the dispatch
-
-        // navigate('/results')
+        dispatch(searchApartments(`state=${statesSelected}`))
+        navigate('/results')
     }
     return (
-        <div className="px-12 py-6 my-6 bg-[#fff]">
+        <div className="px-12 py-6 my-12 bg-[#FFF] w-[90vw] md:w-[75vw] lg:w-[55vw] xl:w-[35vw] 2xl:w-[35vw]  transition ease-in-out delay-350 shadow-md hover:shadow-2xl  hover:scale-105">
             <form>
                 <div>
                     {/* City Selection */}
                     <p className="text-center text-xl text-primary">
                         Pick the cities to compare
                     </p>
-                    <p className="text-center text-xs text-primary">
+                    <p className="text-center text-sm text-primary">
                         Minimum 2
                     </p>
                     <div className="grid gap-3 grid-cols-2 grid-rows-3 mt-4 text-center">
@@ -133,17 +137,17 @@ const SearchForm = () => {
                     </div>
                 </div>
 
-                <p className="text-center text-2xl mt-10 text-primary">
+                <p className="text-center text-xl mt-10 text-primary">
                     Apartment Features
                 </p>
 
                 <div>
                     {' '}
                     {/* Bed Quantity */}
-                    <p className="text-center text-xl mt-4 text-primary">
+                    <p className="text-center text-lg mt-4 text-primary">
                         Beds
                     </p>
-                    <div className="flex justify-evenly mt-4">
+                    <div className="flex justify-evenly mt-4 text-lg">
                         <input
                             type="radio"
                             value="1Bedroom"
@@ -177,8 +181,8 @@ const SearchForm = () => {
                             Monthly Rent
                         </p>
                     </div>
-                    <div className="grid grid-cols-2 gap-6 mt-4">
-                        <div>
+                    <div className="flex justify-evenly mt-4 text-lg">
+                        <div className="w-[45%]">
                             <input
                                 type="number"
                                 name="min"
@@ -192,10 +196,10 @@ const SearchForm = () => {
                                 }
                                 placeholder="Min"
                                 autoComplete="given-value"
-                                className="border border-gray-300 py-2 text-center"
+                                className="border rounded-sm py-1 w-[100%] text-center"
                             />
                         </div>
-                        <div>
+                        <div className="w-[45%]">
                             <input
                                 type="number"
                                 name="max"
@@ -208,7 +212,7 @@ const SearchForm = () => {
                                 }
                                 placeholder="Max"
                                 autoComplete="given-value"
-                                className="border border-gray-300 py-2 text-center"
+                                className="border rounded-sm w-[100%] py-1 text-center"
                             />
                         </div>
                     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 // Importing other components
 import LivabilityResults from './LivabilityResults'
@@ -232,6 +233,9 @@ const results = {
  */
 
 const Results = () => {
+    const { searchResults, loading, error } = useSelector(
+        (state) => state.searchResults
+    )
     // data to display livalibility results / gauge chart
     const livabilityData = results.data.map((stateResult) => {
         const { state, city, livabilityScore } = stateResult
@@ -241,11 +245,17 @@ const Results = () => {
 
     return (
         <div className="text-2xl min-h-[90vh] flex flex-col items-center justify-center">
-            <Slider
-                component={LivabilityResults}
-                componentData={livabilityData}
-            />
-            <ApartmentResults config={results} />
+            {loading && <h3>Loading...</h3>}
+            {!loading && error ? <p>Error : {error}</p> : null}
+            {!loading && (
+                <>
+                    <Slider
+                        component={LivabilityResults}
+                        componentData={livabilityData}
+                    />
+                    <ApartmentResults config={results} />
+                </>
+            )}
         </div>
     )
 }
