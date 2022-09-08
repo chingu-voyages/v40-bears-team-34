@@ -93,7 +93,7 @@ const SearchForm = () => {
         // rentAmount
         // request to get the results || use the dispatch
         dispatch(searchApartments(`state=${statesSelected}`))
-        navigate('/results')
+        navigate('/resultsnew')
     }
     return (
         <div className="px-12 py-6 my-12 bg-[#FFF] w-[90vw] md:w-[75vw] lg:w-[55vw] xl:w-[35vw] 2xl:w-[35vw]  transition ease-in-out delay-350 shadow-md hover:shadow-2xl  hover:scale-105">
