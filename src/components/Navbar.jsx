@@ -41,7 +41,7 @@ const Navbar = () => {
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? `p-4 underline underline-offset-4`
+                                ? `p-4  transition-all duration-350 ease-in-out font-bold `
                                 : 'p-4'
                         }
                         to="/"
@@ -57,10 +57,10 @@ const Navbar = () => {
                             <NavLink
                                 className={({ isActive }) =>
                                     isActive
-                                        ? `p-4 underline underline-offset-4`
+                                        ? `p-4  transition-all duration-350 ease-in-out font-bold`
                                         : 'p-4'
                                 }
-                                to="/resultsnew"
+                                to="/results"
                             >
                                 Results
                             </NavLink>
@@ -73,7 +73,7 @@ const Navbar = () => {
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? `p-4 underline underline-offset-4`
+                                ? `p-4  transition-all duration-350 ease-in-out font-bold`
                                 : 'p-4'
                         }
                         to="/wishlist"
@@ -87,7 +87,7 @@ const Navbar = () => {
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? `p-4 underline underline-offset-4`
+                                ? `p-4  transition-all duration-350 ease-in-out font-bold`
                                 : 'p-4'
                         }
                         to="/apartments"
@@ -123,7 +123,7 @@ const Navbar = () => {
 
                     {results > 0 && (
                         <li className="p-4">
-                            <NavLink onClick={handleNav} to="/resultsnew">
+                            <NavLink onClick={handleNav} to="/results">
                                 Results
                             </NavLink>
                         </li>

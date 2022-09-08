@@ -1,13 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Apartment from '../components/Apartment'
-import ApartmentResults from '../components/Results/ApartmentResults'
 import { shuffle } from '../utils/shuffle'
 const Results = () => {
     const { searchResults, loading, error } = useSelector(
         (state) => state.searchResults
     )
     const shuffled = shuffle(searchResults)
+
     return (
         <div className="text-2xl min-h-[90vh] flex flex-col items-center justify-cente">
             {loading && <h3>Loading...</h3>}
