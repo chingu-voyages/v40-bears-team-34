@@ -75,25 +75,53 @@ const SearchForm = () => {
             .join(',')
 
         // Selected Amenities
+        const amenitiesMap = [
+            'petFriendly',
+            'gated',
+            'InUnitWasherDryer',
+            'pool',
+            'fitnessCenter',
+            'parking',
+        ]
+
         const amenitiesSelected = isAmenityChecked
             .map((item, i) => {
                 let amenity
                 if (item === true) {
-                    amenity = amenities[i]
+                    amenity = `&amenities.${amenitiesMap[i]}=true`
                     return amenity
                 }
             })
             .filter((amenity) => amenity !== undefined)
-            .join(',')
-
+            .join('')
         //TODO
         // Selected Bedrooms
+        const bedTypeSelected = (type) => {
+            return `&bedrooms.${type}.exist=true`
+        }
+
         //bedType
         // Min and Max Amount
-        // rentAmount
+        const minAmountSelected = (amount, type) => {
+            return `&bedrooms.${type}.monthlyRent[gte]=${Number(amount.min)}`
+        }
+        const maxAmountSelected = (amount, type) => {
+            return `&bedrooms.${type}.monthlyRent[lte]=${Number(amount.max)}`
+        }
+
         // request to get the results || use the dispatch
-        dispatch(searchApartments(`state=${statesSelected}`))
-        navigate('/results')
+
+        dispatch(
+            searchApartments(
+                `state=${statesSelected}${bedTypeSelected(
+                    bedType
+                )}${minAmountSelected(rentAmount, bedType)}${maxAmountSelected(
+                    rentAmount,
+                    bedType
+                )}${amenitiesSelected}`
+            )
+        )
+        // navigate('/results')
     }
     return (
         <div className="px-12 py-6 my-12 bg-[#FFF] w-[90vw] md:w-[75vw] lg:w-[55vw] xl:w-[35vw] 2xl:w-[35vw]  transition ease-in-out delay-350 shadow-md hover:shadow-2xl  hover:scale-105">
