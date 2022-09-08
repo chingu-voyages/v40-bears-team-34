@@ -12,9 +12,8 @@ const wishlistSlice = createSlice({
             state.wishlist = [...state.wishlist, action.payload]
         },
         removeFromWishlist: (state, action) => {
-            console.log('removing from wishlist')
             state.wishlist = state.wishlist.filter(
-                (apartment) => apartment.name !== action.payload
+                (apartment) => apartment._id !== action.payload
             )
         },
     },
