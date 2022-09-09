@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 // Importing React Icons
@@ -17,6 +18,9 @@ const Navbar = () => {
     // true = navBar is showing display close menu, false = navBar is not showing, display menu icon
     const [nav, setNav] = useState(false)
 
+    const results = useSelector(
+        (state) => state.searchResults.searchResults.length
+    )
     // Setting active style in NavLink
 
     const handleNav = () => {
@@ -37,7 +41,7 @@ const Navbar = () => {
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? `p-4 underline underline-offset-4`
+                                ? `p-4  transition-all duration-350 ease-in-out font-bold `
                                 : 'p-4'
                         }
                         to="/"
@@ -45,30 +49,50 @@ const Navbar = () => {
                         Home
                     </NavLink>
                 </li>
+
+                {results > 0 && (
+                    <>
+                        <strong>|</strong>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) =>
+                                    isActive
+                                        ? `p-4  transition-all duration-350 ease-in-out font-bold`
+                                        : 'p-4'
+                                }
+                                to="/results"
+                            >
+                                Results
+                            </NavLink>
+                        </li>
+                    </>
+                )}
+
                 <strong>|</strong>
                 <li>
                     <NavLink
                         className={({ isActive }) =>
                             isActive
-                                ? `p-4 underline underline-offset-4`
+                                ? `p-4  transition-all duration-350 ease-in-out font-bold`
+                                : 'p-4'
+                        }
+                        to="/wishlist"
+                    >
+                        WishList
+                    </NavLink>
+                </li>
+
+                <strong>|</strong>
+                <li>
+                    <NavLink
+                        className={({ isActive }) =>
+                            isActive
+                                ? `p-4  transition-all duration-350 ease-in-out font-bold`
                                 : 'p-4'
                         }
                         to="/apartments"
                     >
-                        Apartments
-                    </NavLink>
-                </li>
-                <strong>|</strong>
-                <li>
-                    <NavLink
-                        className={({ isActive }) =>
-                            isActive
-                                ? `p-4 underline underline-offset-4`
-                                : 'p-4'
-                        }
-                        to="/results"
-                    >
-                        Results
+                        All Apartments
                     </NavLink>
                 </li>
             </ul>
@@ -96,14 +120,22 @@ const Navbar = () => {
                             Home
                         </NavLink>
                     </li>
+
+                    {results > 0 && (
+                        <li className="p-4">
+                            <NavLink onClick={handleNav} to="/results">
+                                Results
+                            </NavLink>
+                        </li>
+                    )}
                     <li className="p-4">
-                        <NavLink onClick={handleNav} to="/apartments">
-                            Apartments
+                        <NavLink onClick={handleNav} to="/wishlist">
+                            WishList
                         </NavLink>
                     </li>
                     <li className="p-4">
-                        <NavLink onClick={handleNav} to="/results">
-                            Results
+                        <NavLink onClick={handleNav} to="/apartments">
+                            All Apartments
                         </NavLink>
                     </li>
                 </ul>

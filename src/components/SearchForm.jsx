@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { searchApartments } from '../features/apartment/searchSlice'
 
 const states = [
@@ -33,6 +33,7 @@ const SearchForm = () => {
     )
     const [rentAmount, setRentAmount] = useState({ min: 0, max: 0 })
     const [bedType, setBedType] = useState('')
+    const [error, setError] = useState('')
 
     // Adding refs to check values
     const inputsRef = useRef([])
@@ -75,24 +76,76 @@ const SearchForm = () => {
             .join(',')
 
         // Selected Amenities
+        const amenitiesMap = [
+            'petFriendly',
+            'gated',
+            'InUnitWasherDryer',
+            'pool',
+            'fitnessCenter',
+            'parking',
+        ]
+
         const amenitiesSelected = isAmenityChecked
             .map((item, i) => {
                 let amenity
                 if (item === true) {
-                    amenity = amenities[i]
+                    amenity = `&amenities.${amenitiesMap[i]}=true`
                     return amenity
                 }
             })
             .filter((amenity) => amenity !== undefined)
-            .join(',')
-
+            .join('')
         //TODO
         // Selected Bedrooms
+        const bedTypeSelected = (type) => {
+            return `&bedrooms.${type}.exist=true`
+        }
+
         //bedType
         // Min and Max Amount
-        // rentAmount
+        const minAmountSelected = (amount, type) => {
+            return `&bedrooms.${type}.monthlyRent[gte]=${Number(amount.min)}`
+        }
+        const maxAmountSelected = (amount, type) => {
+            return `&bedrooms.${type}.monthlyRent[lte]=${Number(amount.max)}`
+        }
+
         // request to get the results || use the dispatch
-        dispatch(searchApartments(`state=${statesSelected}`))
+        const amenitiesChecked =
+            isAmenityChecked.filter((amenity) => amenity === true).length >= 2
+        const statesChecked =
+            isStateChecked.filter((state) => state === true).length >= 2
+        const bedTypeChecked =
+            bedType === '1Bedroom' ||
+            bedType === '2Bedroom' ||
+            bedType === '3Bedroom'
+        const minAmountChecked = Number(rentAmount.min) > 0
+        const maxAmountChecked = Number(rentAmount.max) > 0
+
+        if (
+            !amenitiesChecked ||
+            !statesChecked ||
+            !bedTypeChecked ||
+            !minAmountChecked ||
+            !maxAmountChecked
+        ) {
+            setError('Select all the required fields and try again')
+            setTimeout(() => {
+                setError('')
+            }, 8000)
+            return
+        }
+
+        dispatch(
+            searchApartments(
+                `state=${statesSelected}${bedTypeSelected(
+                    bedType
+                )}${minAmountSelected(rentAmount, bedType)}${maxAmountSelected(
+                    rentAmount,
+                    bedType
+                )}${amenitiesSelected}`
+            )
+        )
         navigate('/results')
     }
     return (
@@ -264,6 +317,9 @@ const SearchForm = () => {
                 </div>
 
                 <div className="grid grid-cols-1 grid-rows-1 mt-12">
+                    <span className="text-[red] text-sm text-center my-3">
+                        {error}
+                    </span>
                     <button
                         type="button"
                         onClick={handleSearch}
