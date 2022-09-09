@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Route, Routes } from 'react-router-dom'
 import { fetchApartments } from './features/apartment/apartmentsSlice'
 
 // Importing other components
@@ -18,25 +18,12 @@ function App() {
     useEffect(() => {
         dispatch(fetchApartments())
     }, [])
-    const results = useSelector(
-        (state) => state.searchResults.searchResults.length
-    )
     return (
         <React.Fragment>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route
-                    path="/results"
-                    element={
-                        results < 1 ? (
-                            <Navigate replace to="/" />
-                        ) : (
-                            <Resultsnew />
-                        )
-                    }
-                />
-
+                <Route path="/results" element={<Resultsnew />} />
                 <Route path="/apartments" element={<Apartments />} />
                 <Route path="/wishlist" element={<WishList />} />
                 <Route path="/apartments/:id" element={<Apartment />} />
