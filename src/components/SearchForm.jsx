@@ -33,6 +33,7 @@ const SearchForm = () => {
     )
     const [rentAmount, setRentAmount] = useState({ min: 0, max: 0 })
     const [bedType, setBedType] = useState('')
+    const [error, setError] = useState('')
 
     // Adding refs to check values
     const inputsRef = useRef([])
@@ -110,6 +111,30 @@ const SearchForm = () => {
         }
 
         // request to get the results || use the dispatch
+        const amenitiesChecked =
+            isAmenityChecked.filter((amenity) => amenity === true).length >= 2
+        const statesChecked =
+            isStateChecked.filter((state) => state === true).length >= 2
+        const bedTypeChecked =
+            bedType === '1Bedroom' ||
+            bedType === '2Bedroom' ||
+            bedType === '3Bedroom'
+        const minAmountChecked = Number(rentAmount.min) > 0
+        const maxAmountChecked = Number(rentAmount.max) > 0
+
+        if (
+            !amenitiesChecked ||
+            !statesChecked ||
+            !bedTypeChecked ||
+            !minAmountChecked ||
+            !maxAmountChecked
+        ) {
+            setError('Select all the required fields and try again')
+            setTimeout(() => {
+                setError('')
+            }, 8000)
+            return
+        }
 
         dispatch(
             searchApartments(
@@ -121,7 +146,7 @@ const SearchForm = () => {
                 )}${amenitiesSelected}`
             )
         )
-        // navigate('/results')
+        navigate('/results')
     }
     return (
         <div className="px-12 py-6 my-12 bg-[#FFF] w-[90vw] md:w-[75vw] lg:w-[55vw] xl:w-[35vw] 2xl:w-[35vw]  transition ease-in-out delay-350 shadow-md hover:shadow-2xl  hover:scale-105">
@@ -292,6 +317,9 @@ const SearchForm = () => {
                 </div>
 
                 <div className="grid grid-cols-1 grid-rows-1 mt-12">
+                    <span className="text-[red] text-sm text-center my-3">
+                        {error}
+                    </span>
                     <button
                         type="button"
                         onClick={handleSearch}
