@@ -18,7 +18,7 @@ const Results = () => {
                         component={LivabilityResults}
                         componentData={livabilityData}
                     /> */}
-                    <h3>Slider Component</h3>
+                    {/* <h3>Slider Component</h3> */}
                     {/* <ApartmentResults searchResults={searchResults} /> */}
                     <h3 className="py-7 font-bold text-2xl">Search Results</h3>
                     <div className="py-7 flex flex-wrap items-center justify-center bg-[#f7f7f7]">
