@@ -1,0 +1,7 @@
+Header background: #A1D2DE
+
+Text Font, Color, Size: Verdana (sans-serif),  #000000, Responsive.
+
+Heading/subheading Text: #A1D2DE ( Use black if it doesn't look good. )
+
+Button background: #A1D2DE
