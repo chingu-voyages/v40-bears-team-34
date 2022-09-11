@@ -11,11 +11,11 @@ const Footer = () => {
         { name: 'Company Details', url: '/' },
     ]
     return (
-        <footer className="h-[100px] bg-[#fff] text-center  py-7">
+        <footer className="h-[170px] bg-[#fff] text-center  py-7">
             <div>
                 &copy;{year} <span>Apch. All rights reserved</span>
             </div>
-            <div className="flex flex-wrap justify-center items-center py-5">
+            <div className="flex flex-wrap justify-center items-center py-5 mb-7">
                 {navItemsOne.map((item, i) => (
                     <Link to="/" key={`${i + 1}:${item.name}`} className="mx-2">
                         {item.name}
