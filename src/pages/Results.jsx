@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Apartment from '../components/Apartment'
 import { shuffle } from '../utils/shuffle'
@@ -7,9 +7,15 @@ const Results = () => {
         (state) => state.searchResults
     )
     const shuffled = shuffle(searchResults)
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }, [])
 
     return (
-        <div className="text-2xl min-h-[90vh] flex flex-col items-center justify-cente">
+        <div
+            id="results"
+            className="text-2xl min-h-[90vh] flex flex-col items-center justify-cente"
+        >
             {loading && <h3>Loading...</h3>}
             {!loading && error ? <p>Error : {error}</p> : null}
             {!loading && searchResults.length > 0 ? (
