@@ -1,12 +1,12 @@
 import React from 'react'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { BsHeartFill } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
     addToWishlist,
     removeFromWishlist,
 } from '../features/apartment/wishlistSlice'
-import { useNavigate } from 'react-router-dom'
-import { AiOutlineHeart } from 'react-icons/ai'
-import { BsHeartFill } from 'react-icons/bs'
 
 const Apartment = ({ apartment }) => {
     const navigate = useNavigate()
@@ -26,7 +26,7 @@ const Apartment = ({ apartment }) => {
     }
     return (
         <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/3 px-4 ">
-            <div className="transition ease-in delay-150 bg-[#FDEEDC] rounded-lg overflow-hidden mb-10 hover:cursor-pointer shadow-md hover:shadow-2xl  hover:scale-105 relative">
+            <div className="transition ease-in delay-150 bg-secondary rounded-lg overflow-hidden mb-10 hover:cursor-pointer shadow-md hover:shadow-2xl  hover:scale-105 relative">
                 {wishlisted === undefined ? (
                     <AiOutlineHeart
                         className="absolute right-9 top-7 z-10"
@@ -80,7 +80,7 @@ const Apartment = ({ apartment }) => {
                             })
                             .filter((item) => item !== undefined)
                             .map((item) => (
-                                <span className="text-sm mx-1 px-3 py-2 my-2 rounded-lg bg-[#FFD8A9]">
+                                <span className="text-sm mx-1 px-3 py-2 my-2 rounded-lg bg-primary text-[#fff]">
                                     {item.item}
                                 </span>
                             ))}
