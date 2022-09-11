@@ -1,13 +1,12 @@
-
 // Importing Bar component from Chart Js Library
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
     BarElement,
+    CategoryScale,
+    Chart as ChartJS,
+    Legend,
+    LinearScale,
     Title,
     Tooltip,
-    Legend,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 
@@ -71,7 +70,7 @@ const BarChart = ({ chartData, apartmentName }) => {
     }
 
     // Data formatted for Chart
-    const userData ={
+    const userData = {
         labels: [
             'Quiet',
             'Clean',

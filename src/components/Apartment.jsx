@@ -7,6 +7,7 @@ import {
     addToWishlist,
     removeFromWishlist,
 } from '../features/apartment/wishlistSlice'
+import BarChart from '../pages/Results/BarChart'
 
 const Apartment = ({ apartment }) => {
     const navigate = useNavigate()
@@ -84,6 +85,15 @@ const Apartment = ({ apartment }) => {
                                     {item.item}
                                 </span>
                             ))}
+                    </div>
+                </div>
+                <div className="w-[100%] ">
+                    <div className="px-3  m-3 bg-[#f2f2f2]">
+                        <BarChart
+                            key={apartment._id}
+                            chartData={apartment.reviewScores}
+                            apartmentName={apartment.name}
+                        />
                     </div>
                 </div>
             </div>
