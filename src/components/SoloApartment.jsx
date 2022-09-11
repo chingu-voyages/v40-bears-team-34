@@ -1,4 +1,5 @@
 import React from 'react'
+import BarChart from '../pages/Results/BarChart'
 import ApartmentReviews from './ApartmentReviews'
 
 const SoloApartment = ({ apartment }) => {
@@ -47,6 +48,13 @@ const SoloApartment = ({ apartment }) => {
                                 ))}
                     </div>
                 </div>
+            </div>
+            <div className="w-[90vw] md:w-[75vw] m-6 px-5 py-5 border border-secondary bg-[#f7f7f7]">
+                <BarChart
+                    key={apartment._id}
+                    chartData={apartment.reviewScores}
+                    apartmentName={apartment.name}
+                />
             </div>
             <ApartmentReviews reviews={apartment.reviews} />
         </>
