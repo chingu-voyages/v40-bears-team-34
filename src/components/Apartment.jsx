@@ -2,21 +2,23 @@ import React from 'react'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { BsHeartFill } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import {
     addToWishlist,
     removeFromWishlist,
 } from '../features/apartment/wishlistSlice'
+import BarChart from '../pages/Results/BarChart'
 
 const Apartment = ({ apartment }) => {
     const navigate = useNavigate()
+    const location = useLocation()
     const dispatch = useDispatch()
     const wishlisted = useSelector((state) =>
         state.wishlisted.wishlist.find(
             (wishlisted) => wishlisted._id === apartment._id
         )
     )
-
+    console.log(location)
     const filledHandler = (e) => {
         if (!wishlisted) {
             dispatch(addToWishlist(apartment))
@@ -86,6 +88,17 @@ const Apartment = ({ apartment }) => {
                             ))}
                     </div>
                 </div>
+                {location.pathname !== '/apartments' ? (
+                    <div className="w-[100%] ">
+                        <div className="px-3  m-3 bg-[#f2f2f2]">
+                            <BarChart
+                                key={apartment._id}
+                                chartData={apartment.reviewScores}
+                                apartmentName={apartment.name}
+                            />
+                        </div>
+                    </div>
+                ) : null}
             </div>
         </div>
     )

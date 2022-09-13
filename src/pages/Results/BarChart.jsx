@@ -1,14 +1,12 @@
-import { useState } from 'react'
-
 // Importing Bar component from Chart Js Library
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
     BarElement,
+    CategoryScale,
+    Chart as ChartJS,
+    Legend,
+    LinearScale,
     Title,
     Tooltip,
-    Legend,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 
@@ -16,32 +14,26 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 // Component that will contain bar chart
 // to display positivity and negativity rate
-const BarChart = ({ chartData }) => {
-    const [oficialData, setOficialData] = useState(chartData)
-    console.log(chartData[0])
-    // Formatting dummy data for Bar Chart
-    const apartamentReviewRates = chartData[0].livabilityScore.reviewInsides
-    // List that represent labels for chart, must be an array
-    const labels = []
+const BarChart = ({ chartData, apartmentName }) => {
     const positiveValues = []
     const negativeValues = []
 
-    for (const amenity in apartamentReviewRates) {
-        // Positive Values
-        positiveValues.push(Object.values(apartamentReviewRates[amenity])[0])
-        // Negative values
-        negativeValues.push(Object.values(apartamentReviewRates[amenity])[1])
-        // Amenity labels
-        labels.push(amenity)
+    for (const rating in chartData) {
+        if (rating.includes('Positive')) {
+            positiveValues.push(chartData[rating])
+        } else {
+            negativeValues.push(chartData[rating])
+        }
     }
 
+    const mainTitle = `Ratings Reviews for ${apartmentName}`
     const options = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
             title: {
                 display: true,
-                text: 'Review Rates',
+                text: mainTitle,
                 color: '#000000',
                 font: {
                     family: "'Verdana', 'sans-serif'",
@@ -78,7 +70,7 @@ const BarChart = ({ chartData }) => {
     }
 
     // Data formatted for Chart
-    const [userData, setUserData] = useState({
+    const userData = {
         labels: [
             'Quiet',
             'Clean',
@@ -99,7 +91,7 @@ const BarChart = ({ chartData }) => {
                 backgroundColor: '#E32804',
             },
         ],
-    })
+    }
 
     return <Bar data={userData} options={options} />
     // return <div>BarChart</div>;
